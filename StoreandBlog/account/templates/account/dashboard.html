@@ -1,0 +1,7 @@
+{% extends 'main/base.html' %}
+
+<h1> This is account dashboard. <h1>
+
+{% block content %}
+    Hello, {{ user.username|default:'Guest' }}!
+{% endblock %}
