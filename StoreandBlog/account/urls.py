@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import *
+from .forms import *
 
 urlpatterns = [
     path('dashboard/', DashboardView.as_view(), name='account-dashboard'),
-    path('',include("django.contrib.auth.urls"))
+    path('',include("django.contrib.auth.urls")),
+    path('register',ContactFormView.as_view(),name='account-register')
 ]
