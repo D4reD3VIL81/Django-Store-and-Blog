@@ -12,4 +12,6 @@ class Post(models.Model):
     qouted_text_01 = models.Field(max_length=256)
     qouted_text_02 = models.CharField(max_length=256)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_publish_date = models.DateField()
+
     

@@ -2,4 +2,9 @@
 
 {% block content %}
 
+<h1>{{ object.title }}</h1>
+<p>{{ object.text_01 }}</p>
+<p>Reporter: {{ object.author }}</p>
+<p>Published: {{ object.post_publish_date|date }}</p>
+
 {% endblock content %}
