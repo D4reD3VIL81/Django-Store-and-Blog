@@ -2,15 +2,33 @@ from re import template
 from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.utils import timezone
-from django.views.generic.detail import DetailView, ListView
+from django.views.generic.detail import DetailView
 from .models import Post
 from django.views.generic.list import ListView
-from django.views.generic import TemplateView
-from .forms import *
-from django.views.generic.edit import FormView
-from .forms import PostCreationForm, Pos
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from .models import Post
+from django.urls import reverse_lazy
 
-# Create your views here.
+
+# Putting views here.
+
+class AuthorCreateView(CreateView):
+    model = Post
+    fields = ['text_01','qouted_text_01','title','post_publish_date']
+
+    def set_author():
+        None
+
+    def set_publish_date():
+        None
+
+class AuthorUpdateView(UpdateView):
+    model = Post
+    fields = ['name']
+
+class AuthorDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy('post-list')
 
 class PostDetailView(DetailView):
 
@@ -33,28 +51,3 @@ class PostListView(ListView):
         context['now'] = timezone.now()
         return context
 
-class PostDeleteOrUpdateFormView(FormView):
-    template_name = 'blog/update_or_delete_post.html'
-    form_class = PostChangeOrUpdateForm
-    success_url = 'post-list'
-
-
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
-        return super().form_valid(form)
-
-
-class PostCreationFormView(FormView):
-    template_name = 'blog/form.html'
-    form_class = PostCreationForm
-    success_url = 'post-list'
-
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.send_email()
-        return super().form_valid(form)
-
-    
