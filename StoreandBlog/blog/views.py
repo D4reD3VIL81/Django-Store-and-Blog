@@ -12,9 +12,11 @@ from django.urls import reverse_lazy
 
 # Putting views here.
 
-class AuthorCreateView(CreateView):
+class PostCreateView(CreateView):
     model = Post
-    fields = ['text_01','qouted_text_01','title','post_publish_date']
+    fields = ['text_01','qouted_text_01','title']
+    template_name = 'blog/create_post.html'
+
 
     def set_author():
         None
@@ -22,13 +24,14 @@ class AuthorCreateView(CreateView):
     def set_publish_date():
         None
 
-class AuthorUpdateView(UpdateView):
+class PostUpdateView(UpdateView):
     model = Post
-    fields = ['name']
+    fields = ['text_01','qouted_text_01','title']
+    template_name = 'blog/update_post.html'
 
-class AuthorDeleteView(DeleteView):
+class PostDeleteView(DeleteView):
     model = Post
-    success_url = reverse_lazy('post-list')
+    success_url = reverse_lazy('post:list')
 
 class PostDetailView(DetailView):
 

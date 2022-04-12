@@ -5,7 +5,7 @@
 
 <ul>
     {% for post in object_list %}
-        <li>{{ post.post_publish_date|date }} - {{ post.title }}</li>
+        <li>{{ post.post_publish_date|date }} - {{ post.title }} - Link: {{ post.get_absolute_url }} </li>
     {% empty %}
         <li>No Post yet.</li>
     {% endfor %}

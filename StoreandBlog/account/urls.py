@@ -18,8 +18,10 @@ from django.urls import path,include
 from .views import *
 from .forms import *
 
+app_name = 'account'
+
 urlpatterns = [
-    path('dashboard/', DashboardView.as_view(), name='account-dashboard'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('',include("django.contrib.auth.urls")),
-    path('register',ContactFormView.as_view(),name='account-register')
+    path('register/',ContactFormView.as_view(),name='register')
 ]
