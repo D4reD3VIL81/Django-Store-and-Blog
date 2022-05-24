@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     text_01 = models.CharField(max_length=256)
-    title = models.CharField(max_length=256, Unique = True)
+    title = models.CharField(max_length=256, unique = True)
     qouted_text_01 = models.Field(max_length=256)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post_publish_date = models.DateField()
