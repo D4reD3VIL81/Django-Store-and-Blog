@@ -19,4 +19,11 @@ class Post(models.Model):
         return self.title
     
     
-    
+class Comment(models.Model):
+    text_01 = models.TextField()
+    authur = models.ForeignKey(User, on_delete=models.CASECADE)
+    publish_date = models.DateField()
+    accepted = models.BooleanField()
+
+    def get_slug(self):
+        return self.pk
