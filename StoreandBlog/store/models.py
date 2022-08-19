@@ -10,7 +10,7 @@ class Product(models.Model):
     color = models.CharField(max_length=256)
 
     def get_absolute_url(self):
-        return reverse("post:detail", kwargs={"slug": self.title})
+        return reverse("post:detail", kwargs={"slug": self.name})
 
     def get_slug(self):
-        return self.title
+        return self.name
